@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { Context } from "../App";
 
 const FrontPage = () => {
@@ -19,6 +19,7 @@ const FrontPage = () => {
     <div>
       <h1>this is front page</h1>
       <h1>plz login</h1>
+      <Link to="/login">login</Link>
     </div>
   );
 };
