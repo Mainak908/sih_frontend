@@ -3,7 +3,7 @@ import { Context } from "../../App";
 import { Navigate } from "react-router-dom";
 
 const AdminHome = () => {
-  const { user, setUser } = useContext(Context);
+  const { user } = useContext(Context);
   if (!user._id) return <Navigate to="/login" />;
   return (
     <div>

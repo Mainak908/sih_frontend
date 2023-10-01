@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 import { Context } from "../App";
 
 const FrontPage = () => {
-  const { user, setUser } = useContext(Context);
+  const { user } = useContext(Context);
   if (user._id) {
     if (user.role === "nuser") {
       return <Navigate to="/userhome" />;

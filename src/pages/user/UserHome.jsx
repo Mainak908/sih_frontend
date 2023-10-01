@@ -5,7 +5,7 @@ import { Context } from "../../App";
 import { Navigate } from "react-router-dom";
 
 const Home = () => {
-  const { user, setUser } = useContext(Context);
+  const { user } = useContext(Context);
   const location = Usegeolocation();
   const [t, i18n] = useTranslation("global");
   const lanchange = (lang) => {
