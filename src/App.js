@@ -13,7 +13,7 @@ function App() {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/v1/me")
+    fetch("https://sih-backend-3vgz.onrender.com/api/v1/me")
       .then((res) => res.json())
       .then((data) => {
         if (data.success) setUser(data.user);

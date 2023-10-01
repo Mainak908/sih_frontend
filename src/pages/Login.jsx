@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-hot-toast";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { Context } from "../App";
 
 const Login = () => {
@@ -101,12 +101,12 @@ const Login = () => {
             </div>
 
             <div className="text-sm">
-              <a
-                href="#"
+              <Link
+                to="/forgot-passwd"
                 className="font-medium text-indigo-600 hover:text-indigo-500"
               >
                 Forgot your password?
-              </a>
+              </Link>
             </div>
           </div>
 

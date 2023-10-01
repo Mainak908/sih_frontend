@@ -13,17 +13,21 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3001/api/v1/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      });
+      const res = await fetch(
+        "https://sih-backend-3vgz.onrender.com/api/v1/register",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            credentials: "include",
+          },
+          body: JSON.stringify({
+            name,
+            email,
+            password,
+          }),
+        }
+      );
 
       const data = await res.json();
       if (!data.success) return toast.error(data.message);
