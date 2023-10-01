@@ -12,17 +12,20 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:3001/api/v1/login", {
-        method: "POST",
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-          credentials: "include",
-        },
-      });
+      const res = await fetch(
+        "https://sih-backend-3vgz.onrender.com/api/v1/login",
+        {
+          method: "POST",
+          body: JSON.stringify({
+            email,
+            password,
+          }),
+          headers: {
+            "Content-Type": "application/json",
+            credentials: "include",
+          },
+        }
+      );
       const data = await res.json();
       if (!data.success) return toast.error(data.message);
       setUser(data.user);
