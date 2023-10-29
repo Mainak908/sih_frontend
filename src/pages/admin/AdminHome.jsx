@@ -1,14 +1,18 @@
-import React, { useContext } from "react";
-import { Context } from "../../App";
+import React from "react";
 import { Navigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Navbar from "../../components/Navbar";
 
 const AdminHome = () => {
-  const { user } = useContext(Context);
+  const user = useSelector((state) => state.auth.userData);
   if (!user._id) return <Navigate to="/login" />;
   return (
-    <div>
-      <h1>this is Admin Home page</h1>
-    </div>
+    <>
+      <Navbar />
+      <div>
+        <h1>this is Admin Home page</h1>
+      </div>
+    </>
   );
 };
 

@@ -1,34 +1,36 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import { Navigate, Link } from "react-router-dom";
-import { Context } from "../App";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/slices/authenticate";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { user, setUser } = useContext(Context);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.userData);
 
   const loginHandler = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(
-        "https://sih-backend-3vgz.onrender.com/api/v1/login",
-        {
-          method: "POST",
-          body: JSON.stringify({
-            email,
-            password,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-            credentials: "include",
-          },
-        }
-      );
+      const res = await fetch("http://localhost:3001/api/v1/login", {
+        method: "POST",
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+        credentials: "include",
+      });
       const data = await res.json();
-      if (!data.success) return toast.error(data.message);
-      setUser(data.user);
+      if (!data.success) {
+        toast.error(data.message);
+      }
+      dispatch(login({ userData: data.user }));
+
       toast.success(data.message);
     } catch (error) {
       return toast.error(error);
@@ -55,7 +57,7 @@ const Login = () => {
           </h2>
         </div>
 
-        <form className="mt-8 space-y-6" onSubmit={loginHandler}>
+        <form className="mt-8 space-y-6" id="login" onSubmit={loginHandler}>
           <input type="hidden" name="remember" value="true" />
           <div className="rounded-md shadow-sm -space-y-px">
             <div>
@@ -119,8 +121,8 @@ const Login = () => {
             </button>
           </div>
 
-          {/* <p>OR</p> */}
-          {/* <Link href={"/register"}>New User</Link> */}
+          <p>OR</p>
+          <Link to={"/register"}>Register</Link>
         </form>
       </div>
     </div>
