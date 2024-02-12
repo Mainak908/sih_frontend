@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 // import { useTranslation } from "react-i18next";
-import { Navigate } from "react-router-dom";
-import { useSelector } from "react-redux";
-import Footer from "../../components/footer";
 import GoogleMapReact from "google-map-react";
+import { useSelector } from "react-redux";
+import { Navigate } from "react-router-dom";
 import Usegeolocation from "../../Hooks/Usegeolocation";
 import ChattBot from "../../components/Chattbot";
 import Navbar from "../../components/Navbar";
+import Footer from "../../components/footer";
 
 const AnyReactComponent = () => (
   <div>
@@ -83,7 +83,7 @@ const Home = () => {
           <div className=" w-96 h-56">
             <GoogleMapReact
               bootstrapURLKeys={{
-                key: "AIzaSyAvZCqL0DyH_J3yovBVBXCC7NywTTAyH7E",
+                key: "",
               }}
               defaultCenter={defaultProps.center}
               defaultZoom={defaultProps.zoom}

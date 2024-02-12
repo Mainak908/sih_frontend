@@ -8,7 +8,6 @@ import global_hi from "./translation/hindi/global.json";
 import global_bn from "./translation/ben/global.json";
 import i18next from "i18next";
 import { I18nextProvider } from "react-i18next";
-
 import { Provider } from "react-redux";
 import { store } from "./redux/store";
 
